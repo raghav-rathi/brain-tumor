@@ -1,0 +1,4 @@
+conda create -n opencv
+conda activate opencv
+conda install matplotlib numpy scikit-image
+conda install -c menpo opencv 
