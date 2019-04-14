@@ -17,13 +17,14 @@ app.post("/upload", (req, res) => {
 
   req.files.brain.mv(filepath, err => {
     if (err) return res.status(500).send(err);
+    request("http://localhost:5000/query?path=" + path_, {json:true}, (err, res, body) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(body);
+    });
   });
-//   fetch("localhost:5000/query?path=" + path_)
-//     .then(data => res.send(data))
-//     .catch(err => console.log(err));
-  request("localhost:5000/query?path=" + path_,(err,res,body)=>{
-      
-  });
+  res.send("okay");
 });
 
 app.listen(port, () => console.log(`listening on port ${port}`));

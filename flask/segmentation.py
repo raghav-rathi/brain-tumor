@@ -5,7 +5,8 @@ from skimage.morphology import extrema
 from skimage.morphology import watershed as skwater
 import time
 
-def imageProcessing(im):
+def imageProcessing(i,m):
+    im = i+m
     img = cv2.imread(im)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -51,8 +52,7 @@ def imageProcessing(im):
 
     im1 = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    
-    filepath = './out/'+im.split('.')[0]+'-'+timestr+'.jpg'
+    filepath = './out/'+m.split('.')[0]+'.png'
     cv2.imwrite(filepath,im1)
 
     return filepath
