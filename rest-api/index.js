@@ -1,5 +1,6 @@
 const express = require("express"),
-  fileUpload = require("express-fileupload");
+  fileUpload = require("express-fileupload"),
+  path = require('path');
 
 const request = require("request");
 
@@ -17,14 +18,14 @@ app.post("/upload", (req, res) => {
 
   req.files.brain.mv(filepath, err => {
     if (err) return res.status(500).send(err);
-    request("http://localhost:5000/query?path=" + path_, {json:true}, (err, res, body) => {
+    request("http://localhost:5000/query?path=" + path_, {json:true}, (err, resp, body) => {
       if (err) {
         console.log(err);
       }
-      console.log(body);
+      res.sendFile(path.join(__dirname,'../flask/out/',`${body}.png`));
     });
+
   });
-  res.send("okay");
 });
 
 app.listen(port, () => console.log(`listening on port ${port}`));

@@ -13,4 +13,6 @@ CORS(app)
 def path():
     path = request.args.get('path')
     print(imageProcessing('./in/',path+'.png'))
-    return '''<h1>The language value is: {}</h1>'''.format(path)
+    if request.method == 'GET':
+        return jsonify(isError= False,message= path,statusCode= 200,data= data), 200
+    abort(404)
