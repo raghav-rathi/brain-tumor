@@ -53,6 +53,6 @@ def imageProcessing(i,m):
     im1 = cv2.cvtColor(img, cv2.COLOR_HSV2RGB)
     timestr = time.strftime("%Y%m%d-%H%M%S")
     filepath = './out/'+m.split('.')[0]+'.png'
-    cv2.imwrite(filepath,im1)
-
-    return filepath
+    status = cv2.imwrite(filepath,im1)
+    print(filepath, status)
+    return filepath,status

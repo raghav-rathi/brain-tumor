@@ -12,7 +12,9 @@ CORS(app)
 @app.route('/query')
 def path():
     path = request.args.get('path')
-    print(imageProcessing('./in/',path+'.png'))
+    filepath,status = imageProcessing('./in/',path+'.png')
+
     if request.method == 'GET':
-        return jsonify(isError= False,message= path,statusCode= 200,data= data), 200
+        if status == True:
+            return path
     abort(404)
