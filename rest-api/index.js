@@ -2,6 +2,8 @@ const express = require("express"),
   fileUpload = require("express-fileupload"),
   path = require('path');
 
+const cors = require('cors')
+
 const request = require("request");
 
 const port = 8080;
