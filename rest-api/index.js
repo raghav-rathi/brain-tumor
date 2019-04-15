@@ -9,12 +9,16 @@ const request = require("request");
 const port = 8080;
 const app = express();
 
+app.use(cors())
+
 app.use("/", express.static("static"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({ useTempFiles: true, tempFileDir: "./tmp/" }));
 
 app.post("/upload", (req, res) => {
+  console.log(res.body)
+  
   path_ = `brains${Math.floor(Date.now() / 1000)}`;
   filepath = `../flask/in/${path_}.png`;
 
