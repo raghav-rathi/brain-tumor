@@ -3,11 +3,14 @@ const express = require("express"),
   path = require('path');
 
 const cors = require('cors')
+
 const request = require("request");
+
 const port = 8080;
 const app = express();
 
 app.use(cors())
+
 app.use("/", express.static("static"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
