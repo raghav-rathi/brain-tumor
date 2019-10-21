@@ -13,3 +13,4 @@ The algorithm has two stages, first is pre-processing of given MRI image and aft
 
  
  
+Run instructions `flask run`
